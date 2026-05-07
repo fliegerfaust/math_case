@@ -26,19 +26,19 @@
   display: block;
   width: 60px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5));
+  background: linear-gradient(90deg, transparent, rgba(138, 82, 230, 0.5));
 }
 
 .opener__header::after {
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.5), transparent);
+  background: linear-gradient(90deg, rgba(138, 82, 230, 0.5), transparent);
 }
 
 .opener__header-text {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.3em;
-  color: rgba(0, 212, 255, 0.7);
+  color: rgba(138, 82, 230, 0.8);
   text-transform: uppercase;
 }
 
@@ -49,8 +49,8 @@
   height: 160px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.35);
-  border-top: 1px solid rgba(0, 212, 255, 0.2);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  border-top: 1px solid rgba(138, 82, 230, 0.22);
+  border-bottom: 1px solid rgba(138, 82, 230, 0.22);
 }
 
 /* Side gradient fade-out */
@@ -65,12 +65,12 @@
 
 .opener__fade--left {
   left: 0;
-  background: linear-gradient(90deg, #0b1622 0%, transparent 100%);
+  background: linear-gradient(90deg, #0E0B1A 0%, transparent 100%);
 }
 
 .opener__fade--right {
   right: 0;
-  background: linear-gradient(270deg, #0b1622 0%, transparent 100%);
+  background: linear-gradient(270deg, #0E0B1A 0%, transparent 100%);
 }
 
 /* === Center marker === */
@@ -90,8 +90,8 @@
 .opener__marker-line {
   flex: 1;
   width: 2px;
-  background: rgba(0, 212, 255, 0.9);
-  box-shadow: 0 0 8px rgba(0, 212, 255, 0.8), 0 0 20px rgba(0, 212, 255, 0.4);
+  background: #CCEE00;
+  box-shadow: 0 0 8px rgba(204, 238, 0, 0.9), 0 0 20px rgba(204, 238, 0, 0.45);
 }
 
 .opener__marker-arrow {
@@ -103,15 +103,15 @@
 .opener__marker-arrow--top {
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 10px solid rgba(0, 212, 255, 0.9);
-  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.8));
+  border-top: 10px solid #CCEE00;
+  filter: drop-shadow(0 0 4px rgba(204, 238, 0, 0.9));
 }
 
 .opener__marker-arrow--bottom {
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 10px solid rgba(0, 212, 255, 0.9);
-  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.8));
+  border-bottom: 10px solid #CCEE00;
+  filter: drop-shadow(0 0 4px rgba(204, 238, 0, 0.9));
 }
 
 /* === Scrolling strip === */
@@ -121,7 +121,6 @@
   gap: 8px;
   padding: 8px 0;
   will-change: transform;
-  /* height fills viewport */
   height: 100%;
   align-items: center;
 }
@@ -139,8 +138,8 @@
 }
 
 .opener__item--winner {
-  border-color: rgba(0, 212, 255, 0.6);
-  box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
+  border-color: rgba(204, 238, 0, 0.75);
+  box-shadow: 0 0 16px rgba(204, 238, 0, 0.35);
 }
 
 .opener__item-img {
@@ -162,7 +161,7 @@
 .opener__hint {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(237, 232, 255, 0.28);
   margin: 0;
   letter-spacing: 0.08em;
   animation: blink 1.4s ease-in-out infinite;

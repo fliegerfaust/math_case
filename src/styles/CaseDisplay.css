@@ -13,22 +13,22 @@
 }
 
 .case-title__label {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: #e0f4ff;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #EDE8FF;
   text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  text-shadow: 0 0 20px rgba(138, 82, 230, 0.7);
   text-align: center;
 }
 
 .case-title__subtitle {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.3em;
-  color: rgba(0, 212, 255, 0.55);
+  color: rgba(138, 82, 230, 0.65);
   text-transform: uppercase;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .case-wrapper:focus-visible .case {
-  outline: 2px solid rgba(0, 212, 255, 0.8);
+  outline: 2px solid rgba(138, 82, 230, 0.8);
   outline-offset: 4px;
 }
 
@@ -55,17 +55,17 @@
   height: 220px;
   background: linear-gradient(
     160deg,
-    #0d1b2a 0%,
-    #162234 35%,
-    #0a1520 70%,
-    #0d1b2a 100%
+    #130C22 0%,
+    #1C1135 35%,
+    #0F0A1E 70%,
+    #130C22 100%
   );
-  border: 1px solid rgba(0, 212, 255, 0.25);
+  border: 1px solid rgba(138, 82, 230, 0.3);
   border-radius: 8px;
   box-shadow:
-    0 0 40px rgba(0, 212, 255, 0.12),
-    0 0 80px rgba(0, 212, 255, 0.06),
-    inset 0 1px 0 rgba(0, 212, 255, 0.1),
+    0 0 40px rgba(138, 82, 230, 0.14),
+    0 0 80px rgba(138, 82, 230, 0.07),
+    inset 0 1px 0 rgba(138, 82, 230, 0.12),
     inset 0 -1px 0 rgba(0, 0, 0, 0.4);
   transition:
     transform 0.2s ease,
@@ -77,9 +77,9 @@
 .case-wrapper:hover .case {
   transform: translateY(-4px) scale(1.02);
   box-shadow:
-    0 0 60px rgba(0, 212, 255, 0.22),
-    0 0 120px rgba(0, 212, 255, 0.1),
-    inset 0 1px 0 rgba(0, 212, 255, 0.15),
+    0 0 60px rgba(138, 82, 230, 0.26),
+    0 0 120px rgba(138, 82, 230, 0.12),
+    inset 0 1px 0 rgba(138, 82, 230, 0.18),
     inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -90,15 +90,15 @@
 @keyframes case-pulse {
   0%, 100% {
     box-shadow:
-      0 0 40px rgba(0, 212, 255, 0.12),
-      0 0 80px rgba(0, 212, 255, 0.06),
-      inset 0 1px 0 rgba(0, 212, 255, 0.1);
+      0 0 40px rgba(138, 82, 230, 0.14),
+      0 0 80px rgba(138, 82, 230, 0.07),
+      inset 0 1px 0 rgba(138, 82, 230, 0.12);
   }
   50% {
     box-shadow:
-      0 0 60px rgba(0, 212, 255, 0.22),
-      0 0 120px rgba(0, 212, 255, 0.1),
-      inset 0 1px 0 rgba(0, 212, 255, 0.18);
+      0 0 60px rgba(138, 82, 230, 0.26),
+      0 0 120px rgba(138, 82, 230, 0.12),
+      inset 0 1px 0 rgba(138, 82, 230, 0.2);
   }
 }
 
@@ -107,7 +107,7 @@
   position: absolute;
   width: 16px;
   height: 16px;
-  border-color: rgba(0, 212, 255, 0.8);
+  border-color: rgba(204, 238, 0, 0.75);
   border-style: solid;
   z-index: 2;
 }
@@ -144,7 +144,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgba(138, 82, 230, 0.9), transparent);
   animation: scan 4s linear infinite;
   z-index: 3;
 }
@@ -164,8 +164,8 @@
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(0, 212, 255, 0.3) 30%,
-    rgba(0, 212, 255, 0.3) 70%,
+    rgba(138, 82, 230, 0.25) 30%,
+    rgba(138, 82, 230, 0.25) 70%,
     transparent
   );
 }
@@ -189,34 +189,47 @@
   padding: 0 40px 20px;
 }
 
-/* === Emblem === */
+/* === Emblem (logo sticker) === */
 .case__emblem {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(0, 212, 255, 0.85);
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
+  margin-bottom: 10px;
+  background: #EDE8FF;
+  border-radius: 12px;
+  padding: 8px 12px;
+  border: 1px solid rgba(138, 82, 230, 0.35);
   animation: emblem-glow 2.5s ease-in-out infinite;
-  margin-bottom: 12px;
 }
 
-.case__emblem-svg {
-  width: 80px;
-  height: 80px;
+.case__emblem-logo {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
 }
 
 @keyframes emblem-glow {
-  0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4)); }
-  50% { filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.9)); }
+  0%, 100% {
+    box-shadow:
+      0 0 8px rgba(138, 82, 230, 0.35),
+      inset 0 0 8px rgba(138, 82, 230, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(138, 82, 230, 0.7),
+      inset 0 0 12px rgba(138, 82, 230, 0.14);
+  }
 }
 
 /* === Label === */
 .case__label {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  color: rgba(0, 212, 255, 0.45);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgba(204, 238, 0, 0.55);
   text-transform: uppercase;
 }
 
@@ -230,7 +243,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 212, 255, 0.6) 50%,
+    rgba(204, 238, 0, 0.55) 50%,
     transparent 100%
   );
   display: flex;
@@ -243,15 +256,15 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(0, 212, 255, 0.9);
-  box-shadow: 0 0 6px rgba(0, 212, 255, 0.8);
+  background: #CCEE00;
+  box-shadow: 0 0 6px rgba(204, 238, 0, 0.9);
 }
 
 .case__bottom-bar-line {
   flex: 1;
   max-width: 80px;
   height: 1px;
-  background: rgba(0, 212, 255, 0.4);
+  background: rgba(204, 238, 0, 0.35);
 }
 
 /* === Glow under case === */
@@ -262,7 +275,7 @@
   transform: translateX(-50%);
   width: 240px;
   height: 40px;
-  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(138, 82, 230, 0.2) 0%, transparent 70%);
   pointer-events: none;
   animation: case-pulse 3s ease-in-out infinite;
 }
@@ -271,7 +284,7 @@
 .case-hint {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(237, 232, 255, 0.35);
   letter-spacing: 0.05em;
   margin: 0;
 }
@@ -303,9 +316,13 @@
     aspect-ratio: 320 / 220;
   }
 
-  .case__emblem-svg {
-    width: 60px;
-    height: 60px;
+  .case__emblem {
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  .case__emblem-logo {
+    width: 80px;
   }
 
   .case__stripe--left {

@@ -25,38 +25,13 @@ export default function CaseDisplay({ onOpen }) {
             <div className="case__stripe case__stripe--left" />
             <div className="case__stripe case__stripe--right" />
 
-            {/* Center emblem */}
+            {/* Center emblem — логотип преподавателя */}
             <div className="case__emblem">
-              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="case__emblem-svg">
-                {/* Outer hex ring */}
-                <polygon
-                  points="40,4 72,22 72,58 40,76 8,58 8,22"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                  opacity="0.6"
-                />
-                {/* Inner hex */}
-                <polygon
-                  points="40,14 64,28 64,52 40,66 16,52 16,28"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  fill="none"
-                  opacity="0.4"
-                />
-                {/* Math symbol */}
-                <text
-                  x="40"
-                  y="47"
-                  textAnchor="middle"
-                  fontFamily="serif"
-                  fontSize="28"
-                  fill="currentColor"
-                  fontWeight="bold"
-                >
-                  ∑
-                </text>
-              </svg>
+              <img
+                src="logo.png"
+                alt="ДенВал научит"
+                className="case__emblem-logo"
+              />
             </div>
 
             {/* Bottom label */}

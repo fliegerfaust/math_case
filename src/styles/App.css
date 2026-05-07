@@ -11,8 +11,8 @@ html, body, #root {
 }
 
 body {
-  background: #0b1622;
-  color: #e0f4ff;
+  background: #0E0B1A;
+  color: #EDE8FF;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -48,8 +48,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(138, 82, 230, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 82, 230, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   animation: grid-drift 20s linear infinite;
 }
@@ -65,7 +65,7 @@ body {
   background: radial-gradient(
     ellipse at center,
     transparent 30%,
-    rgba(11, 22, 34, 0.7) 100%
+    rgba(14, 11, 26, 0.75) 100%
   );
 }
 
