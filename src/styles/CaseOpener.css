@@ -44,74 +44,51 @@
 
 /* === Viewport === */
 .opener__viewport {
+  --lens-r: 90px;
+
   position: relative;
   width: 100%;
-  height: 160px;
+  height: 200px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.35);
   border-top: 1px solid rgba(138, 82, 230, 0.22);
   border-bottom: 1px solid rgba(138, 82, 230, 0.22);
 }
 
-/* Side gradient fade-out */
-.opener__fade {
+/* === Track layers === */
+.opener__track {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
-  z-index: 10;
-  pointer-events: none;
+  inset: 0;
 }
 
-.opener__fade--left {
-  left: 0;
-  background: linear-gradient(90deg, #0E0B1A 0%, transparent 100%);
+/* Outer layer: cards scaled down + blurred + dimmed */
+.opener__track--outer {
+  z-index: 1;
 }
 
-.opener__fade--right {
-  right: 0;
-  background: linear-gradient(270deg, #0E0B1A 0%, transparent 100%);
+.opener__track--outer .opener__item {
+  transform: scale(0.78);
+  filter: blur(2.5px) brightness(0.5) saturate(0.6);
 }
 
-/* === Center marker === */
-.opener__marker {
+/* Inner layer: sharp cards clipped to the lens circle */
+.opener__track--inner {
+  z-index: 2;
+  clip-path: circle(var(--lens-r) at 50% 50%);
+}
+
+/* Subtle ambient glow inside the lens */
+.opener__track--inner::before {
+  content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  inset: 0;
+  background: radial-gradient(
+    circle var(--lens-r) at 50% 50%,
+    rgba(138, 82, 230, 0.09) 0%,
+    transparent 100%
+  );
+  z-index: 3;
   pointer-events: none;
-}
-
-.opener__marker-line {
-  flex: 1;
-  width: 2px;
-  background: #CCEE00;
-  box-shadow: 0 0 8px rgba(204, 238, 0, 0.9), 0 0 20px rgba(204, 238, 0, 0.45);
-}
-
-.opener__marker-arrow {
-  display: block;
-  width: 0;
-  height: 0;
-}
-
-.opener__marker-arrow--top {
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid #CCEE00;
-  filter: drop-shadow(0 0 4px rgba(204, 238, 0, 0.9));
-}
-
-.opener__marker-arrow--bottom {
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 10px solid #CCEE00;
-  filter: drop-shadow(0 0 4px rgba(204, 238, 0, 0.9));
 }
 
 /* === Scrolling strip === */
@@ -131,16 +108,45 @@
   flex-shrink: 0;
   width: 200px;
   height: 140px;
-  border-radius: 4px;
+  border-radius: 10px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: #fff;
 }
 
-.opener__item--winner {
-  border-color: rgba(204, 238, 0, 0.75);
-  box-shadow: 0 0 16px rgba(204, 238, 0, 0.35);
+/* === Rarity bottom strip === */
+.opener__item--common    { border-bottom: 5px solid #4ADE80; box-shadow: 0 4px 14px rgba(74, 222, 128, 0.35); }
+.opener__item--rare      { border-bottom: 5px solid #8A52E6; box-shadow: 0 4px 14px rgba(138, 82, 230, 0.35); }
+.opener__item--epic      { border-bottom: 5px solid #4A7CF7; box-shadow: 0 4px 14px rgba(74, 124, 247, 0.35); }
+.opener__item--legendary { border-bottom: 5px solid #CCEE00; box-shadow: 0 4px 16px rgba(204, 238, 0, 0.4); }
+
+/* === Soft radial glow on card face === */
+.opener__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  pointer-events: none;
+  z-index: 1;
 }
+
+.opener__item--common::after    { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(74, 222, 128, 0.22), transparent); }
+.opener__item--rare::after      { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(138, 82, 230, 0.22), transparent); }
+.opener__item--epic::after      { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(74, 124, 247, 0.22), transparent); }
+.opener__item--legendary::after { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(204, 238, 0, 0.24), transparent); }
+
+/* === Winner — stronger glow by rarity === */
+.opener__item--common.opener__item--winner    { border-color: #4ADE80; box-shadow: 0 0 22px rgba(74, 222, 128, 0.65); }
+.opener__item--rare.opener__item--winner      { border-color: #8A52E6; box-shadow: 0 0 24px rgba(138, 82, 230, 0.7); }
+.opener__item--epic.opener__item--winner      { border-color: #4A7CF7; box-shadow: 0 0 24px rgba(74, 124, 247, 0.7); }
+.opener__item--legendary.opener__item--winner { border-color: #CCEE00; box-shadow: 0 0 28px rgba(204, 238, 0, 0.75); }
+
+.opener__item--common.opener__item--winner::after    { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(74, 222, 128, 0.38), transparent); }
+.opener__item--rare.opener__item--winner::after      { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(138, 82, 230, 0.38), transparent); }
+.opener__item--epic.opener__item--winner::after      { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(74, 124, 247, 0.38), transparent); }
+.opener__item--legendary.opener__item--winner::after { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(204, 238, 0, 0.42), transparent); }
 
 .opener__item-img {
   width: 100%;
@@ -155,6 +161,67 @@
   inset: 0;
   background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
   pointer-events: none;
+}
+
+/* === Lens ring === */
+.opener__lens-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--lens-r) * 2);
+  height: calc(var(--lens-r) * 2);
+  border-radius: 50%;
+  border: 2px solid rgba(204, 238, 0, 0.85);
+  box-shadow:
+    0 0 14px rgba(204, 238, 0, 0.55),
+    0 0 40px rgba(204, 238, 0, 0.2),
+    inset 0 0 14px rgba(204, 238, 0, 0.06);
+  z-index: 15;
+  pointer-events: none;
+  animation: lens-pulse 2s ease-in-out infinite;
+}
+
+@keyframes lens-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 14px rgba(204, 238, 0, 0.55),
+      0 0 40px rgba(204, 238, 0, 0.2),
+      inset 0 0 14px rgba(204, 238, 0, 0.06);
+    border-color: rgba(204, 238, 0, 0.85);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(204, 238, 0, 0.8),
+      0 0 60px rgba(204, 238, 0, 0.35),
+      inset 0 0 20px rgba(204, 238, 0, 0.1);
+    border-color: rgba(204, 238, 0, 1);
+  }
+}
+
+/* Chevron notches at top and bottom of the ring */
+.opener__lens-notch {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+}
+
+.opener__lens-notch--top {
+  top: -7px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid #CCEE00;
+  filter: drop-shadow(0 0 4px rgba(204, 238, 0, 0.9));
+}
+
+.opener__lens-notch--bottom {
+  bottom: -7px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 9px solid #CCEE00;
+  filter: drop-shadow(0 0 4px rgba(204, 238, 0, 0.9));
 }
 
 /* === Hint === */
@@ -175,16 +242,13 @@
 /* === Responsive === */
 @media (max-width: 480px) {
   .opener__viewport {
-    height: 120px;
+    --lens-r: 65px;
+    height: 150px;
   }
 
   .opener__item {
     width: 150px;
-    height: 95px;
-  }
-
-  .opener__fade {
-    width: 60px;
+    height: 118px;
   }
 
   .opener__header-text {
@@ -199,15 +263,12 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
   .opener__viewport {
-    height: 140px;
+    --lens-r: 78px;
+    height: 175px;
   }
 
   .opener__item {
     width: 175px;
-    height: 118px;
-  }
-
-  .opener__fade {
-    width: 80px;
+    height: 138px;
   }
 }
