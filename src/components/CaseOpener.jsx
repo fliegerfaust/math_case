@@ -83,13 +83,15 @@ export default function CaseOpener({ tasks, winnerId, onFinished }) {
 
       {/* Viewport window */}
       <div className="opener__viewport">
-        {/* Lens blur overlay — dims & blurs everything outside the lens circle */}
-        <div className="opener__lens-blur" />
+        {/* Gradient masks on sides */}
+        <div className="opener__fade opener__fade--left" />
+        <div className="opener__fade opener__fade--right" />
 
-        {/* Neon lens ring with top/bottom chevron notches */}
-        <div className="opener__lens-ring">
-          <span className="opener__lens-notch opener__lens-notch--top" />
-          <span className="opener__lens-notch opener__lens-notch--bottom" />
+        {/* Center marker */}
+        <div className="opener__marker">
+          <span className="opener__marker-arrow opener__marker-arrow--top" />
+          <span className="opener__marker-line" />
+          <span className="opener__marker-arrow opener__marker-arrow--bottom" />
         </div>
 
         {/* Scrolling strip */}
