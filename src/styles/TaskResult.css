@@ -17,7 +17,7 @@
   }
 }
 
-/* === Header badge === */
+/* === Header === */
 .result__header {
   display: flex;
   align-items: center;
@@ -30,22 +30,33 @@
   display: block;
   width: 50px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(138, 82, 230, 0.65));
 }
 
-.result__header::after {
-  background: linear-gradient(270deg, transparent, rgba(138, 82, 230, 0.65));
-}
+/* Header line color inherits from rarity on parent */
+.result--common .result__header::before,
+.result--common .result__header::after  { background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.6)); }
+.result--rare .result__header::before,
+.result--rare .result__header::after    { background: linear-gradient(90deg, transparent, rgba(138, 82, 230, 0.65)); }
+.result--epic .result__header::before,
+.result--epic .result__header::after    { background: linear-gradient(90deg, transparent, rgba(74, 124, 247, 0.65)); }
+.result--legendary .result__header::before,
+.result--legendary .result__header::after { background: linear-gradient(90deg, transparent, rgba(204, 238, 0, 0.65)); }
 
-.result__header-badge {
+.result__header::after { transform: scaleX(-1); }
+
+/* === Rarity badge === */
+.result__rarity-badge {
   font-family: 'Nunito', sans-serif;
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.35em;
-  color: rgba(138, 82, 230, 0.9);
+  font-weight: 800;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(138, 82, 230, 0.5);
 }
+
+.result__rarity-badge--common    { color: #4ADE80; text-shadow: 0 0 8px rgba(74,222,128,0.55); }
+.result__rarity-badge--rare      { color: #8A52E6; text-shadow: 0 0 10px rgba(138,82,230,0.6); }
+.result__rarity-badge--epic      { color: #4A7CF7; text-shadow: 0 0 10px rgba(74,124,247,0.6); }
+.result__rarity-badge--legendary { color: #CCEE00; text-shadow: 0 0 12px rgba(204,238,0,0.7); }
 
 /* === Card === */
 .result__card {
@@ -54,25 +65,44 @@
   width: 100%;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid rgba(138, 82, 230, 0.35);
-  box-shadow:
-    0 0 40px rgba(138, 82, 230, 0.16),
-    0 0 80px rgba(138, 82, 230, 0.08),
-    0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid transparent;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   animation: card-glow 2.5s ease-in-out infinite;
+}
+
+/* Card border + glow by rarity */
+.result--common .result__card {
+  border-color: rgba(74, 222, 128, 0.4);
+  --glow-lo: rgba(74, 222, 128, 0.14);
+  --glow-hi: rgba(74, 222, 128, 0.28);
+}
+.result--rare .result__card {
+  border-color: rgba(138, 82, 230, 0.4);
+  --glow-lo: rgba(138, 82, 230, 0.16);
+  --glow-hi: rgba(138, 82, 230, 0.32);
+}
+.result--epic .result__card {
+  border-color: rgba(74, 124, 247, 0.4);
+  --glow-lo: rgba(74, 124, 247, 0.16);
+  --glow-hi: rgba(74, 124, 247, 0.32);
+}
+.result--legendary .result__card {
+  border-color: rgba(204, 238, 0, 0.5);
+  --glow-lo: rgba(204, 238, 0, 0.18);
+  --glow-hi: rgba(204, 238, 0, 0.38);
 }
 
 @keyframes card-glow {
   0%, 100% {
     box-shadow:
-      0 0 40px rgba(138, 82, 230, 0.16),
-      0 0 80px rgba(138, 82, 230, 0.08),
+      0 0 40px var(--glow-lo, rgba(138, 82, 230, 0.16)),
+      0 0 80px var(--glow-lo, rgba(138, 82, 230, 0.08)),
       0 20px 60px rgba(0, 0, 0, 0.5);
   }
   50% {
     box-shadow:
-      0 0 60px rgba(138, 82, 230, 0.3),
-      0 0 120px rgba(138, 82, 230, 0.15),
+      0 0 60px var(--glow-hi, rgba(138, 82, 230, 0.3)),
+      0 0 120px var(--glow-lo, rgba(138, 82, 230, 0.15)),
       0 20px 60px rgba(0, 0, 0, 0.5);
   }
 }
@@ -84,32 +114,24 @@
   background: #fff;
 }
 
-/* Corner accents */
+/* Corner accents — color by rarity */
 .result__corner {
   position: absolute;
   width: 14px;
   height: 14px;
-  border-color: rgba(204, 238, 0, 0.85);
   border-style: solid;
   z-index: 2;
 }
 
-.result__corner--tl {
-  top: 5px; left: 5px;
-  border-width: 2px 0 0 2px;
-}
-.result__corner--tr {
-  top: 5px; right: 5px;
-  border-width: 2px 2px 0 0;
-}
-.result__corner--bl {
-  bottom: 5px; left: 5px;
-  border-width: 0 0 2px 2px;
-}
-.result__corner--br {
-  bottom: 5px; right: 5px;
-  border-width: 0 2px 2px 0;
-}
+.result--common .result__corner    { border-color: rgba(74, 222, 128, 0.8); }
+.result--rare .result__corner      { border-color: rgba(138, 82, 230, 0.85); }
+.result--epic .result__corner      { border-color: rgba(74, 124, 247, 0.85); }
+.result--legendary .result__corner { border-color: rgba(204, 238, 0, 0.9); }
+
+.result__corner--tl { top: 5px;    left: 5px;  border-width: 2px 0 0 2px; }
+.result__corner--tr { top: 5px;    right: 5px; border-width: 2px 2px 0 0; }
+.result__corner--bl { bottom: 5px; left: 5px;  border-width: 0 0 2px 2px; }
+.result__corner--br { bottom: 5px; right: 5px; border-width: 0 2px 2px 0; }
 
 /* === Message === */
 .result__message {

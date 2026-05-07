@@ -99,7 +99,7 @@ export default function CaseOpener({ tasks, winnerId, onFinished }) {
           {strip.map((task, i) => (
             <div
               key={i}
-              className={`opener__item ${i === WINNER_INDEX && animDone ? 'opener__item--winner' : ''}`}
+              className={`opener__item opener__item--${task.rarity ?? 'common'} ${i === WINNER_INDEX && animDone ? 'opener__item--winner' : ''}`}
             >
               <img
                 src={task.image}

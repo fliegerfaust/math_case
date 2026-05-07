@@ -1,11 +1,22 @@
 import '../styles/TaskResult.css'
 
+const RARITY_LABELS = {
+  common:    'Базовое',
+  rare:      'Сложное',
+  epic:      'Экзаменационное',
+  legendary: 'Легенда ЕГЭ',
+}
+
 export default function TaskResult({ task, onReopen }) {
+  const rarity = task.rarity ?? 'common'
+
   return (
-    <div className="result">
-      {/* Top label */}
+    <div className={`result result--${rarity}`}>
+      {/* Rarity badge header */}
       <div className="result__header">
-        <span className="result__header-badge">ВЫПАЛО ЗАДАНИЕ</span>
+        <span className={`result__rarity-badge result__rarity-badge--${rarity}`}>
+          {RARITY_LABELS[rarity]}
+        </span>
       </div>
 
       {/* Task image card */}

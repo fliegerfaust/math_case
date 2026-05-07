@@ -137,9 +137,40 @@
   background: #fff;
 }
 
-.opener__item--winner {
-  border-color: rgba(204, 238, 0, 0.75);
-  box-shadow: 0 0 16px rgba(204, 238, 0, 0.35);
+/* === Rarity bottom strip + ambient glow === */
+.opener__item--common {
+  border-bottom: 3px solid #4ADE80;
+  box-shadow: 0 4px 14px rgba(74, 222, 128, 0.35), inset 0 -24px 20px rgba(74, 222, 128, 0.1);
+}
+.opener__item--rare {
+  border-bottom: 3px solid #8A52E6;
+  box-shadow: 0 4px 14px rgba(138, 82, 230, 0.35), inset 0 -24px 20px rgba(138, 82, 230, 0.1);
+}
+.opener__item--epic {
+  border-bottom: 3px solid #4A7CF7;
+  box-shadow: 0 4px 14px rgba(74, 124, 247, 0.35), inset 0 -24px 20px rgba(74, 124, 247, 0.1);
+}
+.opener__item--legendary {
+  border-bottom: 3px solid #CCEE00;
+  box-shadow: 0 4px 16px rgba(204, 238, 0, 0.4), inset 0 -24px 20px rgba(204, 238, 0, 0.12);
+}
+
+/* === Winner — stronger glow by rarity === */
+.opener__item--common.opener__item--winner {
+  border-color: #4ADE80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.65), inset 0 -32px 28px rgba(74, 222, 128, 0.18);
+}
+.opener__item--rare.opener__item--winner {
+  border-color: #8A52E6;
+  box-shadow: 0 0 22px rgba(138, 82, 230, 0.7), inset 0 -32px 28px rgba(138, 82, 230, 0.18);
+}
+.opener__item--epic.opener__item--winner {
+  border-color: #4A7CF7;
+  box-shadow: 0 0 22px rgba(74, 124, 247, 0.7), inset 0 -32px 28px rgba(74, 124, 247, 0.18);
+}
+.opener__item--legendary.opener__item--winner {
+  border-color: #CCEE00;
+  box-shadow: 0 0 26px rgba(204, 238, 0, 0.75), inset 0 -32px 28px rgba(204, 238, 0, 0.2);
 }
 
 .opener__item-img {
