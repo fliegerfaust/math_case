@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import '../styles/TaskResult.css'
 
 const RARITY_LABELS = {
@@ -9,6 +10,7 @@ const RARITY_LABELS = {
 
 export default function TaskResult({ task, onReopen }) {
   const rarity = task.rarity ?? 'common'
+  const [hintOpen, setHintOpen] = useState(false)
 
   return (
     <div className={`result result--${rarity}`}>
@@ -21,7 +23,6 @@ export default function TaskResult({ task, onReopen }) {
 
       {/* Task image card */}
       <div className="result__card">
-        {/* Corner accents */}
         <span className="result__corner result__corner--tl" />
         <span className="result__corner result__corner--tr" />
         <span className="result__corner result__corner--bl" />
@@ -35,8 +36,17 @@ export default function TaskResult({ task, onReopen }) {
         />
       </div>
 
-      {/* Motivating message */}
-      <div className="result__message">
+      {/* Hint trigger */}
+      <button
+        className={`result__hint-trigger ${hintOpen ? 'result__hint-trigger--open' : ''}`}
+        onClick={() => setHintOpen(h => !h)}
+      >
+        <span className="result__hint-trigger-icon">?</span>
+        {hintOpen ? 'Скрыть подсказку' : 'Застрял? Здесь небольшая подсказка'}
+      </button>
+
+      {/* Collapsible hint message */}
+      <div className={`result__message ${hintOpen ? 'result__message--open' : ''}`}>
         <div className="result__message-icon">✦</div>
         <p className="result__message-text">{task.message}</p>
       </div>
