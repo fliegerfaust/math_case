@@ -137,41 +137,39 @@
   background: #fff;
 }
 
-/* === Rarity bottom strip + ambient glow === */
-.opener__item--common {
-  border-bottom: 3px solid #4ADE80;
-  box-shadow: 0 4px 14px rgba(74, 222, 128, 0.35), inset 0 -24px 20px rgba(74, 222, 128, 0.1);
-}
-.opener__item--rare {
-  border-bottom: 3px solid #8A52E6;
-  box-shadow: 0 4px 14px rgba(138, 82, 230, 0.35), inset 0 -24px 20px rgba(138, 82, 230, 0.1);
-}
-.opener__item--epic {
-  border-bottom: 3px solid #4A7CF7;
-  box-shadow: 0 4px 14px rgba(74, 124, 247, 0.35), inset 0 -24px 20px rgba(74, 124, 247, 0.1);
-}
-.opener__item--legendary {
-  border-bottom: 3px solid #CCEE00;
-  box-shadow: 0 4px 16px rgba(204, 238, 0, 0.4), inset 0 -24px 20px rgba(204, 238, 0, 0.12);
+/* === Rarity bottom strip === */
+.opener__item--common    { border-bottom: 5px solid #4ADE80; box-shadow: 0 4px 14px rgba(74, 222, 128, 0.35); }
+.opener__item--rare      { border-bottom: 5px solid #8A52E6; box-shadow: 0 4px 14px rgba(138, 82, 230, 0.35); }
+.opener__item--epic      { border-bottom: 5px solid #4A7CF7; box-shadow: 0 4px 14px rgba(74, 124, 247, 0.35); }
+.opener__item--legendary { border-bottom: 5px solid #CCEE00; box-shadow: 0 4px 16px rgba(204, 238, 0, 0.4); }
+
+/* === Soft radial glow on card face (via ::after, clipped by overflow: hidden) === */
+.opener__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  pointer-events: none;
+  z-index: 1;
 }
 
+.opener__item--common::after    { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(74, 222, 128, 0.22), transparent); }
+.opener__item--rare::after      { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(138, 82, 230, 0.22), transparent); }
+.opener__item--epic::after      { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(74, 124, 247, 0.22), transparent); }
+.opener__item--legendary::after { background: radial-gradient(ellipse 90% 55% at 50% 100%, rgba(204, 238, 0, 0.24), transparent); }
+
 /* === Winner — stronger glow by rarity === */
-.opener__item--common.opener__item--winner {
-  border-color: #4ADE80;
-  box-shadow: 0 0 20px rgba(74, 222, 128, 0.65), inset 0 -32px 28px rgba(74, 222, 128, 0.18);
-}
-.opener__item--rare.opener__item--winner {
-  border-color: #8A52E6;
-  box-shadow: 0 0 22px rgba(138, 82, 230, 0.7), inset 0 -32px 28px rgba(138, 82, 230, 0.18);
-}
-.opener__item--epic.opener__item--winner {
-  border-color: #4A7CF7;
-  box-shadow: 0 0 22px rgba(74, 124, 247, 0.7), inset 0 -32px 28px rgba(74, 124, 247, 0.18);
-}
-.opener__item--legendary.opener__item--winner {
-  border-color: #CCEE00;
-  box-shadow: 0 0 26px rgba(204, 238, 0, 0.75), inset 0 -32px 28px rgba(204, 238, 0, 0.2);
-}
+.opener__item--common.opener__item--winner    { border-color: #4ADE80; box-shadow: 0 0 22px rgba(74, 222, 128, 0.65); }
+.opener__item--rare.opener__item--winner      { border-color: #8A52E6; box-shadow: 0 0 24px rgba(138, 82, 230, 0.7); }
+.opener__item--epic.opener__item--winner      { border-color: #4A7CF7; box-shadow: 0 0 24px rgba(74, 124, 247, 0.7); }
+.opener__item--legendary.opener__item--winner { border-color: #CCEE00; box-shadow: 0 0 28px rgba(204, 238, 0, 0.75); }
+
+.opener__item--common.opener__item--winner::after    { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(74, 222, 128, 0.38), transparent); }
+.opener__item--rare.opener__item--winner::after      { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(138, 82, 230, 0.38), transparent); }
+.opener__item--epic.opener__item--winner::after      { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(74, 124, 247, 0.38), transparent); }
+.opener__item--legendary.opener__item--winner::after { background: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(204, 238, 0, 0.42), transparent); }
 
 .opener__item-img {
   width: 100%;
