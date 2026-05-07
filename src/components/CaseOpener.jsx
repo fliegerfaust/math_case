@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useRef, useMemo, useState } from 'react'
 import '../styles/CaseOpener.css'
 
 const ITEM_WIDTH = 200   // px width of each task card in the strip (desktop default)
@@ -23,6 +23,7 @@ function buildStrip(tasks, winnerId) {
 export default function CaseOpener({ tasks, winnerId, onFinished }) {
   const stripRef = useRef(null)
   const hasStarted = useRef(false)
+  const [animDone, setAnimDone] = useState(false)
 
   const strip = useMemo(() => buildStrip(tasks, winnerId), [tasks, winnerId])
 
@@ -60,11 +61,16 @@ export default function CaseOpener({ tasks, winnerId, onFinished }) {
     el.style.transform = `translateX(${finalTranslate}px)`
 
     const timer = setTimeout(() => {
-      onFinished()
+      setAnimDone(true)
     }, ANIM_DURATION + 100)
+
+    const finishTimer = setTimeout(() => {
+      onFinished()
+    }, ANIM_DURATION + 1000)
 
     return () => {
       clearTimeout(timer)
+      clearTimeout(finishTimer)
       hasStarted.current = false
     }
   }, [onFinished])
@@ -93,7 +99,7 @@ export default function CaseOpener({ tasks, winnerId, onFinished }) {
           {strip.map((task, i) => (
             <div
               key={i}
-              className={`opener__item ${i === WINNER_INDEX ? 'opener__item--winner' : ''}`}
+              className={`opener__item ${i === WINNER_INDEX && animDone ? 'opener__item--winner' : ''}`}
             >
               <img
                 src={task.image}
