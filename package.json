@@ -6,14 +6,19 @@
   "packageManager": "pnpm@10.33.4",
   "scripts": {
     "dev": "vite",
-    "normalize": "node scripts/normalize-tasks.js",
-    "prebuild": "node scripts/normalize-tasks.js",
+    "tasks:pull": "pnpm node scripts/yadisk-pull-tasks.js",
+    "tasks:gen-json": "pnpm node scripts/gen-tasks-json.js",
+    "tasks:gen-hints": "pnpm node scripts/gen-hints.js",
+    "tasks:sync": "pnpm run tasks:pull && pnpm run normalize && pnpm run tasks:gen-json && pnpm run tasks:gen-hints",
+    "normalize": "pnpm node scripts/normalize-tasks.js",
+    "prebuild": "pnpm node scripts/normalize-tasks.js",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "webdav": "^5.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
@@ -23,6 +28,9 @@
     "vite": "^5.4.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }
