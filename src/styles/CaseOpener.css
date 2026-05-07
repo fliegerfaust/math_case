@@ -1,0 +1,214 @@
+.opener {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === Header === */
+.opener__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.opener__header::before,
+.opener__header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5));
+}
+
+.opener__header::after {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.5), transparent);
+}
+
+.opener__header-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: rgba(0, 212, 255, 0.7);
+  text-transform: uppercase;
+}
+
+/* === Viewport === */
+.opener__viewport {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Side gradient fade-out */
+.opener__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.opener__fade--left {
+  left: 0;
+  background: linear-gradient(90deg, #0b1622 0%, transparent 100%);
+}
+
+.opener__fade--right {
+  right: 0;
+  background: linear-gradient(270deg, #0b1622 0%, transparent 100%);
+}
+
+/* === Center marker === */
+.opener__marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.opener__marker-line {
+  flex: 1;
+  width: 2px;
+  background: rgba(0, 212, 255, 0.9);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.8), 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+.opener__marker-arrow {
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.opener__marker-arrow--top {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid rgba(0, 212, 255, 0.9);
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.8));
+}
+
+.opener__marker-arrow--bottom {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid rgba(0, 212, 255, 0.9);
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.8));
+}
+
+/* === Scrolling strip === */
+.opener__strip {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 8px 0;
+  will-change: transform;
+  /* height fills viewport */
+  height: 100%;
+  align-items: center;
+}
+
+/* === Strip item === */
+.opener__item {
+  position: relative;
+  flex-shrink: 0;
+  width: 200px;
+  height: 140px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #fff;
+}
+
+.opener__item--winner {
+  border-color: rgba(0, 212, 255, 0.6);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
+}
+
+.opener__item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+
+.opener__item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* === Hint === */
+.opener__hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.25);
+  margin: 0;
+  letter-spacing: 0.08em;
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+  .opener__viewport {
+    height: 120px;
+  }
+
+  .opener__item {
+    width: 150px;
+    height: 95px;
+  }
+
+  .opener__fade {
+    width: 60px;
+  }
+
+  .opener__header-text {
+    font-size: 12px;
+  }
+
+  .opener__header::before,
+  .opener__header::after {
+    width: 40px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .opener__viewport {
+    height: 140px;
+  }
+
+  .opener__item {
+    width: 175px;
+    height: 118px;
+  }
+
+  .opener__fade {
+    width: 80px;
+  }
+}
